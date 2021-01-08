@@ -1,54 +1,46 @@
 $(document).ready(function(){
 
-  $('.next').click(pulsanteNext);
-  $('.prev').click(pulsantePrev); //funzione di callback che parte dopo il click
+  $('.next').click(pulsanteNext);//funzione per spostare img verso destra(next)
+  $('.prev').click(pulsantePrev); //funzione per spostare img a sinistra(prev)
 
-  $('.nav i').click(function(){
+  $('.nav i').click(function(){     //funzione per spostare pallino destra
     $('.nav i.active').removeClass('active');
     $(this).addClass('active');
   });
 
 });
-
+// richiamo funzione per spostare img verso destra(next)
 function pulsanteNext(){
 
-  // in questo modo non capisce più quale immagine è attiva
-  // $('.images img.active').removeClass('active');
-  // $('.images img.active').next().addClass('active');
-
   var imgAttiva = $('.images img.active');
-  console.log(imgAttiva);
-  //è importante usare la variabile
-
   var pallinoAttivo = $('.nav i.active');
-
+// immagini next
   imgAttiva.removeClass('active');
   imgAttiva.next().addClass('active');
-
+// pallini next
   pallinoAttivo.removeClass('active');
   pallinoAttivo.next().addClass('active');
-
+  // immagini e pallini quando devono ricominciare dalla prima/primo
   if(imgAttiva.hasClass('last')){
+
     $('.images img.first').addClass('active');
     $('.nav i.first').addClass('active');
   }
 }
-
+//richiamo funzione per spostare img a sinistra(prev)
 function pulsantePrev(){
 
   var imgAttiva = $('.images img.active');
-  console.log(imgAttiva);
-  //è importante usare la variabile
-
   var pallinoAttivo = $('.nav i.active');
-
+//immagini prev
   imgAttiva.removeClass('active');
   imgAttiva.prev().addClass('active');
-
+//pallini prev
   pallinoAttivo.removeClass('active');
   pallinoAttivo.prev().addClass('active');
+// / immagini e pallini quando devono ricominciare dall ultima/ultimo
+  if(imgAttiva.hasClass('first')){
 
-  if(imgAttiva.hasClass('last')){
     $('.images img.last').addClass('active');
     $('.nav i.last').addClass('active');
   }
